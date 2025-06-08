@@ -78,6 +78,7 @@ button{
 .cont-formulario .header{
     display: flex;
     justify-content: flex-end;
+    gap: 30px;
 }
 .cont-formulario .header a{
     padding: 10px 40px;

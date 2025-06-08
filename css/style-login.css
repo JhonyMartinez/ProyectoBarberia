@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box 
+    !important;
+}
+body, html {
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+    background: #EEEEEE;
+    position: relative;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    align-items: center;
+}
+header img{
+    width: 100px;
+}
+header .boton{
+    display: flex;
+    gap: 30px;
+}
+header a{
+    padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
+    background: #01274D;
+    border: 1px solid #01274D;
+    transition: all .3s ease;
+}
+header a:hover{
+    border: 1px solid #01274D;
+    color: #01274D;
+    background: none;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main img{
+    width: 100px;
+}
+main{
+    width: 100%;
+}
+main .principal{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}|
+h1{
+    font-size: 40px;
+    color: #01274D;;
+}
+main form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+}
+main .campo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+main input{
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+main button{
+    padding: 10px 40px;
+    outline: none;
+    background: #FA8F2D;
+    border: 1px solid #FA8F2D;
+    font-size: 16px;
+    color: #000;
+    transition: all .3s ease;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    margin-top: 20px
+}
+main button:hover{
+    border: 1px solid #FA8F2D;
+    background: none;
+
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #01274D;
+    color: #fff;
+    text-align: center;
+    padding: 20px
+}
