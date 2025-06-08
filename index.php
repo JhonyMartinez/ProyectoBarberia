@@ -1,10 +1,18 @@
+<?php
+include("./database/database.php");
+
+
+$sql = "SELECT id, nombre, descripcion, precio FROM tipos_corte ORDER BY id ASC";
+$resultado = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto - Barberia</title>
+    <title>Proyecto - Barbería</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -21,62 +29,65 @@
                     perfecto!</p>
             </div>
         </div>
+
         <div class="cont-formulario">
             <div class="header">
-                <a href="#">Ingresar</a>
+                <a href="views/ver-citas.html">Ver citas Cliente</a>
+                <a href="views/login.html">Ingresar</a>
             </div>
             <div class="formulario">
+
                 <!-- Paso 1: Selección de servicio -->
                 <section id="paso1" class="paso-formulario">
                     <h2>Selecciona un servicio</h2>
                     <div class="servicios">
-                        <div class="servicio">
-                            <div class="foto">
-                                <img src="img/corte.PNG" alt="">
-                            </div>
-                            <div class="info-servicio">
-                                <h3>Corte Clásico</h3>
-                                <p>Se realiza un corte de cabello según el estilo preferido del cliente, utilizando
-                                    tijera o máquina, con finalización en los bordes y limpieza del cuello.</p>
-                                <h4>$20.000</h4>
-                            </div>
-                            <div class="icono">
-                                <button class="seleccionar-servicio" data-servicio="Corte Clásico"><img
-                                        src="img/icono-plus.png" alt=""></button>
-                            </div>
-                        </div>
-                        <div class="servicio">
-                            <div class="foto">
-                                <img src="img/afeitado.jpg" alt="">
-                            </div>
-                            <div class="info-servicio">
-                                <h3>Afeitado con Toalla Caliente</h3>
-                                <p>Incluye preparación del rostro con toalla caliente, aplicación de crema de afeitar,
-                                    afeitado con navaja y finalización con loción calmante.</p>
-                                <h4>$15.000</h4>
-                            </div>
-                            <div class="icono">
-                                <button class="seleccionar-servicio" data-servicio="Afeitado"><img
-                                        src="img/icono-plus.png" alt=""></button>
-                            </div>
-                        </div>
-                        <div class="servicio">
-                            <div class="foto">
-                                <img src="img/barba.jpg" alt="">
-                            </div>
-                            <div class="info-servicio">
-                                <h3>Corte + Barba</h3>
-                                <p>Combina corte de cabello con definición y perfilado de barba, utilizando máquina y
-                                    navaja para lograr un acabado preciso y limpio.</p>
-                                <h4>$30.000</h4>
-                            </div>
-                            <div class="icono">
-                                <button class="seleccionar-servicio" data-servicio="Barba"><img src="img/icono-plus.png"
-                                        alt=""></button>
-                            </div>
-                        </div>
+
+                        <?php
+                        while ($row = $resultado->fetch_assoc()) {
+                            $nombre = htmlspecialchars($row["nombre"]);
+                            $descripcion = htmlspecialchars($row["descripcion"]);
+                            $precio = number_format($row["precio"], 0, ",", ".");
+                            $imagen = "";
+
+                           
+                            switch ($row["id"]) {
+                                case 1:
+                                    $imagen = "img/corte.PNG";
+                                    break;
+                                case 2:
+                                    $imagen = "img/afeitado.jpg";
+                                    break;
+                                case 3:
+                                    $imagen = "img/barba.jpg";
+                                    break;
+                                default:
+                                    $imagen = "img/default.jpg";
+                                    break;
+                            }
+
+                            echo '
+                            <div class="servicio">
+                                <div class="foto">
+                                    <img src="' . $imagen . '" alt="">
+                                </div>
+                                <div class="info-servicio">
+                                    <h3>' . $nombre . '</h3>
+                                    <p>' . $descripcion . '</p>
+                                    <h4>$' . $precio . '</h4>
+                                </div>
+                                <div class="icono">
+                                    <button class="seleccionar-servicio" data-servicio="' . $nombre . '">
+                                        <img src="img/icono-plus.png" alt="">
+                                    </button>
+                                </div>
+                            </div>';
+                        }
+                        ?>
+
                     </div>
                 </section>
+
+                <!-- Paso 2 -->
                 <section id="paso2" class="paso-formulario">
                     <h2>Detalles de tu cita</h2>
                     <div class="campos">
@@ -117,6 +128,8 @@
                         </form>
                     </div>
                 </section>
+
+                <!-- Paso 3 -->
                 <section id="paso3" class="paso-formulario">
                     <h2>Confirma tu cita</h2>
                     <div class="resumen-cita">
@@ -134,6 +147,8 @@
                         </div>
                     </div>
                 </section>
+
+                <!-- Paso 4 -->
                 <section id="paso4" class="paso-formulario">
                     <h2>¡Cita agendada con éxito!</h2>
                     <div class="gracias">
@@ -144,7 +159,7 @@
             </div>
         </div>
     </div>
+
     <script src="script/script.js"></script>
 </body>
-
 </html>
