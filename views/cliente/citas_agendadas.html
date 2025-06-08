@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Barberia</title>
+    <link rel="stylesheet" href="../../css/style-cliente.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <header>
+        <div class="user">
+            <span>Raul Perez</span>
+            <img src="../../img/Male User.png" alt="Logo">
+        </div>
+
+    </header>
+    <main>
+        <img src="../img/Male User.png" alt="">
+        <h1>Citas agendadas</h1>
+        <div class="tabla">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Dia</th>
+                        <th>Hora</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Corte de pelo</td>
+                        <td>20 de mayo</td>
+                        <td>9:00am</td>
+                        <td class="opciones"><span class="open_modal">Editar</span><span>Eliminar</span></td>
+                    </tr>
+                    <tr>
+                        <td>Corte de pelo</td>
+                        <td>20 de mayo</td>
+                        <td>9:00am</td>
+                        <td class="opciones"><span class="open_modal">Editar</span><span>Eliminar</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <section class="modal">
+        <div class="modal_container">
+            <div class="close_modal">
+                <span class="material-symbols-outlined">close</span>
+            </div>
+            <div class="contenido-principal">
+                <h3>Modificar cita</h3>
+                <form action="dashboard_cliente.html">
+            <div class="campo">
+                <label>Fecha:</label>
+                <input type="date" id="fecha" required>
+            </div>
+            <div class="campo">
+                <label>Hora:</label>
+                <input type="time" id="hora" required>
+            </div>
+            <div class="botones">
+                <button class="low" type="submit">Cancelar</button>
+                <button type="submit">Modificar</button>
+            </div>
+        </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Proyecto Barberia - Copyright 2025</p>
+    </footer>
+
+    <script>
+        // Ventana Modal -Ajustes
+        let open_modal = document.querySelector('.open_modal');
+        let modal = document.querySelector('.modal');
+        let close_modal = document.querySelector('.close_modal');
+
+        open_modal.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('modal_show');
+        })
+        close_modal.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('modal_show');
+
+            setTimeout(() => {
+                contenido1.style.display = "block";
+                contenido2.style.display = "none";
+
+                contenedor.style.height = "auto";
+                contenedor.style.width = "750px";
+                contenedor.style.padding = "3rem 2.5rem";
+
+                frame.src = "";
+            }, 1000);
+
+        })
+
+        let ajustes_botones = document.querySelectorAll('.ajuste');
+        let contenido1 = document.querySelector('.contenido_principal');
+        let contenido2 = document.querySelector('.contenido_cargado');
+        let contenedor = document.querySelector('.modal_container');
+        let frame = document.querySelector('.iframe');
+
+        ajustes_botones.forEach(ajuste => {
+            ajuste.addEventListener('click', (e) => {
+                e.preventDefault();
+                contenido1.style.display = "none";
+                contenido2.style.display = "block";
+
+                contenedor.style.height = 90 + "%";
+                contenedor.style.width = 90 + "%";
+                contenedor.style.padding = "2rem 1.5rem";
+
+                frame.src = ajuste.href;
+            })
+        })
+    </script>
+</body>
+
+</html>
