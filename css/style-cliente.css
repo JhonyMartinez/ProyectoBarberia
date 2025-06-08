@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box 
+    !important;
+}
+body, html {
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+    background: #EEEEEE;
+    position: relative;
+}
+header{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 60px;
+    align-items: center;
+}
+header img{
+    width: 60px;
+}
+header .user{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 60px;
+    gap: 40px;
+}
+h1{
+    font-size: 40px;
+    color: #01274D;;
+}
+table{
+    width: 100%;
+}
+table, tr, td, th{
+    border: 10px solid #EEEEEE;
+    border-collapse: collapse;
+    padding: 10px 20px;
+    text-align: left;
+}
+th{
+    background: #FA8F2D;
+}
+tr{
+    background: #FFC28A;
+}
+.opciones{
+    display: flex;
+    gap: 20px;
+    border: none;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #01274D;
+    color: #fff;
+    text-align: center;
+    padding: 20px
+}
+
+/* Ventana Modal de Ajustes */
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #dbdbdbbd;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.modal_container{
+  position: relative;
+  margin: auto;
+  width: 750px;
+  height: auto;
+  background-color: white;
+  border-radius: 6px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.close_modal{
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  cursor: pointer;
+}
+.close_modal span{
+  font-size: 2rem;
+  background: white;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 2px 1px 5px rgb(128, 127, 127);
+}
+.close_modal span:hover{
+  box-shadow: 1px 1px 5px #FA8F2D;
+  transition: 0.3s ease;
+}
+.modal_container h3{
+  font-size: 40px;
+    color: #01274D;
+    text-align: left;
+}
+.modal .contenido-principal{
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    gap: 40px;
+}
+.contenido-principal form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contenido-principal .campo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+.contenido-principal input{
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+.contenido-principal .botones{
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+.contenido-principal button{
+    padding: 10px 40px;
+    outline: none;
+    background: #FA8F2D;
+    border: 1px solid #FA8F2D;
+    font-size: 16px;
+    color: #000;
+    transition: all .3s ease;
+    font-family: "Montserrat", sans-serif;
+    cursor: pointer;
+    margin-top: 20px
+}
+.contenido-principal button:hover{
+    border: 1px solid #FA8F2D;
+    background: none;
+
+}
+.contenido-principal .botones button.low{
+    padding: 10px 40px;
+    outline: none;
+    background: #01274D;
+    border: 1px solid #01274D;
+    font-size: 16px;
+    color: #fff;
+    transition: all .3s ease;
+}
+.modal_show{
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+}
