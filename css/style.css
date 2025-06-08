@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box 
+    !important;
+}
+body, html {
+    height: 100%;
+    overflow: hidden;
+    font-family: "Montserrat", sans-serif;
+    background: #EEEEEE;
+}
+button{
+    cursor: pointer;
+}
+.principal {
+    position: relative;
+    display: flex;
+    height: 100vh;
+}
+.info {
+    width: 40%;
+    background-image: url('../img/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px;
+}
+.info::before {
+    content: '';
+    background: #01274d77;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.info .logo{
+    z-index: 1;
+}
+.info .textos{
+    z-index: 1;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.info .textos h1{
+    font-size: 64px;
+    line-height: 60px;
+}
+.info .textos p{
+    font-size: 20px;
+    width: 70%;
+}
+.cont-formulario {
+    position: absolute;
+    left: 40%;
+    width: 60%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 60px 10%;
+    display: flex;
+    flex-direction: column;
+    background-color: #EEEEEE;
+    gap: 80px;
+}
+.cont-formulario .header{
+    display: flex;
+    justify-content: flex-end;
+}
+.cont-formulario .header a{
+    padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
+    background: #01274D;
+    border: 1px solid #01274D;
+    transition: all .3s ease;
+}
+.cont-formulario .header a:hover{
+    border: 1px solid #01274D;
+    color: #01274D;
+    background: none;
+}
+
+.paso-formulario {
+  display: none;
+  display: flex;
+}
+
+.paso-formulario:not(.hidden) {
+  display: flex;
+  flex-direction: column;
+    gap: 40px;
+}
+
+.hidden {
+  display: none !important;
+}
+.formulario h2{
+    font-size: 40px;
+    color: #01274D;
+}
+.formulario .servicios{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.formulario .servicios .servicio img{
+    width: 254px;
+    height: 254px;
+    object-fit: cover;
+    display: flex;
+}
+.formulario .servicios .servicio{
+    display: flex;
+    gap: 40px;
+    background: #fff;
+    transition: all .3s ease;
+}
+.formulario .servicios .servicio:hover{
+    box-shadow: 0px 5px 15px #01274d7c;
+}
+.formulario .servicios .servicio .info-servicio{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+.formulario .servicios .servicio .icono{
+    display: flex;
+    align-items: flex-end;
+    padding: 40px;
+}
+.formulario .servicios .servicio button{
+    outline: none;
+    border: none;
+    background: transparent;
+}
+.formulario .servicios .servicio .icono img{
+    width: 35px;
+    height: 35px;
+    transition: all .3s ease;
+}
+.formulario .servicios .servicio .icono img:hover{
+    width: 30px;
+    height: 30px;
+}
+.formulario .campos form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.formulario .campos .grupo{
+    display: flex;
+    gap: 40px;
+}
+.formulario .campos .campo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+    width: 100%;
+}
+.formulario .campos .campo input{
+    padding: 15px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+.formulario .campos .botones{
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
+}
+.formulario .botones button{
+    padding: 10px 40px;
+    outline: none;
+    background: #FA8F2D;
+    border: 1px solid #FA8F2D;
+    font-size: 16px;
+    color: #000;
+    transition: all .3s ease;
+    font-family: "Montserrat", sans-serif;
+}
+.formulario .botones button.blue{
+    padding: 10px 40px;
+    outline: none;
+    background: #01274D;
+    border: 1px solid #01274D;
+    font-size: 16px;
+    color: #fff;
+    transition: all .3s ease;
+}
+.formulario .botones button:hover{
+    border: 1px solid #FA8F2D;
+    background: none;
+}
+.formulario .botones button.blue:hover{
+    border: 1px solid #01274D;
+    color: #01274D;
+    background: none;
+}
+.formulario .resumen-cita{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 18px;
+}
+.formulario .resumen-cita .textos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formulario .resumen-cita .botones{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: fit-content;
+}
+.formulario .gracias{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.formulario .gracias a{
+    padding: 10px 40px;
+    color: #fff;
+    text-decoration: none;
+    background: #01274D;
+    width: fit-content;
+    font-size: 16px;
+    border: 1px solid #01274D;
+    transition: all .3s ease;
+}
+.formulario .gracias a:hover{
+    border: 1px solid #01274D;
+    color: #01274D;
+    background: none;
+}
