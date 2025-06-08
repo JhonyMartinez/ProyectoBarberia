@@ -115,7 +115,7 @@ $resultado = $conn->query($sql);
                                 </div>
                             </div>
                             <div class="campo">
-                                <label>Celular:</label>
+                                <label>Celulares:</label>
                                 <input type="tel" id="telefono" required>
                             </div>
                             <div class="campo">
