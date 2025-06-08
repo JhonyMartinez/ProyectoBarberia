@@ -122,6 +122,10 @@ $resultado = $conn->query($sql);
                                 <label>Correo:</label>
                                 <input type="email" id="correo" required>
                             </div>
+                            <div class="campo">
+                                <label>Tipo de Servicio:</label>
+                                <input type="text" id="tipoServicio" >
+                            </div>
                             <div class="botones">
                                 <button type="button" onclick="mostrarPaso(1)">Volver</button>
                                 <button class="blue" type="submit">Agendar cita</button>
@@ -129,38 +133,94 @@ $resultado = $conn->query($sql);
                         </form>
                     </div>
                 </section>
-
-                <!-- Paso 3 -->
-                <section id="paso3" class="paso-formulario">
-                    <h2>Confirma tu cita</h2>
-                    <div class="resumen-cita">
-                        <div class="textos">
-                            <p><strong>Servicio:</strong> <span id="resumen-servicio"></span></p>
-                            <p><strong>Nombre:</strong> <span id="resumen-nombre"></span></p>
-                            <p><strong>Teléfono:</strong> <span id="resumen-telefono"></span></p>
-                            <p><strong>Correo:</strong> <span id="resumen-correo"></span></p>
-                            <p><strong>Fecha:</strong> <span id="resumen-fecha"></span></p>
-                            <p><strong>Hora:</strong> <span id="resumen-hora"></span></p>
-                        </div>
-                        <div class="botones">
-                            <button onclick="mostrarPaso(2)">Volver</button>
-                            <button class="blue" onclick="enviarFormulario()">Confirmar y Enviar</button>
-                        </div>
+                <!-- Modal de Confirmación -->
+                <div id="modalConfirmacion" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center;">
+                    <div style="background:white; padding:20px; border-radius:10px; text-align:center;">
+                        <h3>¿Estás seguro de agendar esta cita?</h3>
+                        <button id="confirmarEnvio" style="margin-right:10px;">Sí, confirmar</button>
+                        <button id="cancelarEnvio">Cancelar</button>
                     </div>
-                </section>
+                </div>
 
-                <!-- Paso 4 -->
-                <section id="paso4" class="paso-formulario">
-                    <h2>¡Cita agendada con éxito!</h2>
-                    <div class="gracias">
-                        <p><span id="gracias-nombre"></span>, tu cita ha sido registrada correctamente. Hemos enviado una confirmación a tu número de WhatsApp. Si deseas revisar o gestionar tu cita, haz clic en el botón de abajo para continuar.</p>
-                        <a href="index.html" class="btn">Volver al inicio</a>
-                    </div>
-                </section>
+               
             </div>
         </div>
     </div>
 
     <script src="script/script.js"></script>
+    <script>                   
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const botones = document.querySelectorAll('.seleccionar-servicio');
+
+            botones.forEach(boton => {
+                boton.addEventListener('click', function () {
+                const servicio = this.getAttribute('data-servicio');
+                document.getElementById('tipoServicio').value = servicio;
+                mostrarPaso(2);
+                });
+            });
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('form-datos');
+    const modal = document.getElementById('modalConfirmacion');
+    const confirmarBtn = document.getElementById('confirmarEnvio');
+    const cancelarBtn = document.getElementById('cancelarEnvio');
+
+    let datosTemporales = null; // Para guardar los datos hasta confirmar
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        datosTemporales = {
+            tipoServicio: document.getElementById('tipoServicio').value,
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value,
+            telefono: document.getElementById('telefono').value,
+            correo: document.getElementById('correo').value,
+            fecha: document.getElementById('fecha').value,
+            hora: document.getElementById('hora').value
+        };
+
+        // Mostrar modal
+        modal.style.display = 'flex';
+    });
+
+    confirmarBtn.addEventListener('click', function () {
+        // Enviar la cita solo si confirma
+        fetch('./controller/guardar_cita.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosTemporales)
+        })
+        .then(res => res.text())
+        .then(respuesta => {
+            alert('✅ Tu cita ha sido registrada exitosamente.\n\nRespuesta del servidor:\n' + respuesta);
+            form.reset();
+            document.getElementById('tipoServicio').value = '';
+            modal.style.display = 'none';
+            mostrarPaso(1);
+        })
+        .catch(error => {
+            console.error('Error al guardar la cita:', error);
+            alert('❌ Ocurrió un error al guardar la cita. Intenta de nuevo.');
+            modal.style.display = 'none';
+        });
+    });
+
+    cancelarBtn.addEventListener('click', function () {
+        modal.style.display = 'none'; // Ocultar modal si cancela
+    });
+});
+</script>
+
+
+
+
+    
 </body>
 </html>
