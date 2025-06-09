@@ -32,7 +32,7 @@ $resultado = $conn->query($sql);
 
         <div class="cont-formulario">
             <div class="header">
-                <a href="views/ver-citas.html">Ver citas Cliente</a>
+                <a href="views/ver-citas.php">Ver citas Cliente</a>
                 <a href="views/login.html">Ingresar</a>
             </div>
             <div class="formulario">
@@ -184,12 +184,12 @@ document.addEventListener('DOMContentLoaded', function () {
             hora: document.getElementById('hora').value
         };
 
-        // Mostrar modal
+       
         modal.style.display = 'flex';
     });
 
     confirmarBtn.addEventListener('click', function () {
-        // Enviar la cita solo si confirma
+        
         fetch('./controller/guardar_cita.php', {
             method: 'POST',
             headers: {
